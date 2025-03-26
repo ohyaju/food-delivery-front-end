@@ -1,4 +1,5 @@
 import React from 'react'
+import HeaderComp from './HeaderComp'
 
 const HomePageComp = () => {
   return (
