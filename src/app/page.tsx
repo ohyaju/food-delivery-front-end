@@ -6,9 +6,8 @@ import CardComp from './components/CardComp'
 
 const page = () => {
   return (
-    <div>
+    <div >
       <HomePageComp />
-      <CardComp/>
       {/* <EmailComp/> */}
     </div>
   )
