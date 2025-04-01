@@ -48,7 +48,7 @@ export  const FoodData = [
             },
             {
                 id: 203,
-                name: "betroot and orange salad",
+                name: "Betroot and orange salad",
                 price: 12.99,
                 ingredients: "Fluffy pancakes stacked with fruits, cream, syrup, and powdered sugar."
             },
