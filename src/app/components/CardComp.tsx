@@ -1,65 +1,82 @@
 import React from 'react'
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
 import FoodData from "@/app/components/FoodData";
-const CardComp = () => {
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+
+export function CardComp() {
     return (
-        <div className="bg-gray-600">
-            {FoodData.map((data) => (
-                <div key={data.id} className='flex justify-center gap-5'>
-                    <h2 className="text-white text-lg font-bold mt-[20px] ">{data.ItemsName}</h2>
-                    {data.foodItems.map((item) => (
-                        <div key={item.id} className="text-gray-900 flex flex-row mt-[40px]">
-                            <Card className="w-[380px] h-[350px]">
+        <div>
+            <div className="flex flex-col">
+                {FoodData.map((data) => (
+                    <div key={data.id} className="flex flex-col gap-4">
+                        <h2 className="text-white text-lg font-bold mt-5">{data.ItemsName}</h2>
 
-                                <CardContent>
-                                    <img
-                                        src="https://s3-alpha-sig.figma.com/img/82cf/2d72/ae8de008994526b031c3fb1879ecf751?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=EpejOztiAJrdi~qyxR8la4qf9pbg6ZIYDp8RSpkSt85t8yNkvhZOSfi2lYltRNBaWXZyYxxlP6tPFA9GZ8jEy1MuyYC7fMQSYOSfAc3xeK2thc5-IBRwTwkxzix18z2U8y-ZU~esUclPkrOENdVtUW9jG48x2-ZgtIuGW4kTc~5hpVcEKWPje2GEHMu0EDxXsR2vllh3oVCZWWKmIRrXxMF1hNZXg0zzdv8ty87~ccSXjAvNekjG0WgoYS4QWhyqf3sF08-bTm-K0NvdLtCFO59FFfIu6CTYXEDLtvxV6fIJVl15Lf4~YlNpSTwahhdT5m0kadNZMjuW58sG3g91GQ__"
-                                        alt="Food Image"
-                                        className="w-[360px] h-[210px] flex place-self-center"
-                                    />
-                                </CardContent>
+                        {data.foodItems.map((item) => (
+                            <Dialog key={item.id}>
+                                <div className="flex flex-row items-center justify-between mt-4">
+                                    <div className="text-gray-900">{item.name}</div>
 
+                                    <DialogTrigger asChild>
+                                        <Button className="text-[#EF4444] rounded-full bg-white">+</Button>
+                                    </DialogTrigger>
+                                </div>
 
-                             
-        
-                                    <div className='ml-5'>
-                                        <CardTitle className=" font-semibold">
-                                            {item.name}
-                                        </CardTitle>
+                                <DialogContent className='flex w-full'>
+                                    <div>
+                                        <img
+                                            className="w-[377px] h-[264px] object-cover rounded-lg"
+                                            src="https://s3-alpha-sig.figma.com/img/34c3/688e/73a7fec1f66f9edc2b2a97c609da743f?Expires=1745798400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=YBtZL4H4jr1LKgFa2g-3XmBDHhV7Wvu5tKUKiKBzscvjixU6FTcjmyKXAlPa92Sngrk6KjiE86WOyU~Ugss9TTY8N1-f1GF4K8QBX9s90dnC5DpAEp01ztZnsf2G0lbjUIPzfA2U9qR8NeuZ4LxMCI0hsUs3C6eDBv9~p2tZn2iX-ks2M1JaseNcqfyG6ONiERN5nprBVzIxgpbnf1PZM-65kmA8liAanegi8jO8NYURVKVmkDMB0ZcD1Coe9a9ghfM9bavjXlZQmb9XiEBb~ENpjd7VpDKvvxa~u681Fpqxly8pa4BV9RjnLjroBS-L5WEsqt0U-SLbW-v4SxN3iA__"
+                                            alt="Food"
+                                        />
+                                    </div>
+                                    <div className='text-green-500'>
+                                    {item.price}
 
-                                        <CardDescription className="font-bold text-black">
-                                            {item.price}
-                                        </CardDescription>
                                     </div>
 
-                                    <CardFooter className="">
-                                        <div className="text-gray-700 text-sm mb-[30px]">
-                                            {item.ingredients}
+
+                                    <div>
+                                        <DialogHeader>
+                                            <DialogTitle className="text-[#EF4444] text-2xl">dd</DialogTitle>
+                                            <DialogDescription>
+                                                <div className='text-indigo-300'>
+                                                    {item.ingredients}
+
+                                                </div>
+                                            </DialogDescription>
+                                        </DialogHeader>
+
+                                        <div className="mt-4">
+                                            <h2 className="text-lg font-medium">Total price</h2>
+                                            <h1 className="font-semibold">${item.price}</h1>
                                         </div>
-                                    </CardFooter>
-                              
-                              
-                            </Card>
-                        </div>
-                    ))}
 
+                                        <div className="flex gap-3 mt-4 items-center">
+                                            <Button className="bg-white rounded-full border border-gray-400 text-black">-</Button>
+                                            <div>1</div>
+                                            <Button className="bg-white rounded-full border border-gray-400 text-black">+</Button>
+                                        </div>
 
-
-
-
-
-
-                </div>
-            ))}
+                                        <DialogFooter className="mt-4">
+                                            <Button type="submit" className="rounded-full h-[44px] w-full">Add to cart</Button>
+                                        </DialogFooter>
+                                    </div>
+                                </DialogContent>
+                            </Dialog>
+                        ))}
+                    </div>
+                ))}
+            </div>
         </div>
-    )
+    );
 }
 
-export default CardComp;
+export default CardComp
