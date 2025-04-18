@@ -20,7 +20,7 @@ const AddFoodComp = () => {
                     <div className='flex gap-5'>
                         <img src='settings.png' />
 
-                        <button>Settings</button>
+                        <button>Settingss</button>
                     </div>
 
                 </div>
