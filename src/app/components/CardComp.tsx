@@ -14,24 +14,29 @@ import {
 export function CardComp() {
     return (
         <div>
-            <div className="flex flex-col">
+            <div className=" bg-gray-500">
                 {FoodData.map((data) => (
                     <div key={data.id} className="flex flex-col gap-4 ">
-                        <h2 className="text-white text-lg font-bold mt-5 bg-amber-200">{data.ItemsName}</h2>
+                        <h2 className=" flex flex-col text-lg font-bold mt-5">{data.ItemsName}</h2>
 
                         {data.foodItems.map((item) => (
-                            <div className='w-[300px] h-[300px] bg-green-300'>
-                                <div>
+                            <div key={item.id} className='flex'>
+                                <div className=''>
                                     <Dialog key={item.id}>
-                                        <div className="flex flex-row items-center  bg-amber-600 mt-4">
+                                        <div className=" items-center w-[380px] h-[350px] bg-white mt-4 rounded-2xl">
                                             <DialogTrigger asChild>
                                                 <Button className="text-[#EF4444] rounded-full bg-white">+</Button>
                                             </DialogTrigger>
-                                            <div className="text-[#EF4444] text-2xl">{item.name}</div>
+                                            <div className='flex justify-between mx-5'>
+                                                <div className="text-[#EF4444] text-2xl font-semibold">
+                                                    {item.name}
+                                                    </div>
 
-                                            <div className='text-green-500'>
-                                                {item.price}
+                                                <div className='font-semibold'>
+                                                    {item.price}
+                                                </div>
                                             </div>
+
                                             <div>{item.ingredients}</div>
 
                                         </div>
